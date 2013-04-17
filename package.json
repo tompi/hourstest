@@ -1,0 +1,18 @@
+{
+  "name": "hourstest2",
+  "description": "Jalla",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+      "yo": "*",
+      "grunt-cli": "*",
+      "grunt": "*",
+      "bower": "*",
+      "generator-angular": "*",
+      "generator-karma": "*",
+      "grunt-contrib-jshint": "*",
+      "grunt-contrib-concat": "*",
+      "grunt-contrib-less": "*"
+      
+  }
+}
