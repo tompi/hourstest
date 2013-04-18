@@ -10,10 +10,10 @@ module.exports = function(grunt) {
         less: {
             bootstrap: {
                 options: {
-                    paths: ['app/components/bootstrap/less/']
+                    paths: ['app/components/bootstrap/less/', 'app/styles/less/bootstrap/']
                 },
                 files: {
-                    'app/components/bootstrap/bootstrap.css': 'app/components/bootstrap/less/bootstrap.less'
+                    'app/components/bootstrap/bootstrap.css': 'app/styles/less/bootstrap/bootstrap.less'
                 }
             }
         },
