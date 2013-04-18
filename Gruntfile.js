@@ -19,7 +19,10 @@ module.exports = function(grunt) {
         },
         concat: {
             bootstrapCss: {
-                src: ['app/components/bootstrap/bootstrap.css'],
+                src: [
+                  'app/components/bootstrap/bootstrap.css',
+                  'app/components/angular-ui/build/angular-ui.min.css'
+                  ],
                 dest: 'app/styles/main.css'
             }
         }

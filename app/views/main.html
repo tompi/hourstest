@@ -1,10 +1,10 @@
-<div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings" ng-bind-html-unsafe="thing"></li>
-  </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
-  <a class="btn btn-primary">Hmm</a>
+<div class="row-fluid">
+  <form class="form-inline">
+    <input type="text" class="input-small" placeholder="Date" ng-model="date" ui-date>
+    <input type="text" class="input-small" placeholder="Email">
+    <input type="password" class="input-small" placeholder="Password">
+    <label class="checkbox">
+      <input type="checkbox">Remember me</label>
+    <button type="submit" class="btn">Sign in</button>
+  </form>
 </div>

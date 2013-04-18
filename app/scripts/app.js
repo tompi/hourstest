@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hours', [])
+angular.module('hours', ['ui'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
