@@ -13,14 +13,14 @@ module.exports = function(grunt) {
                     paths: ['app/components/bootstrap/less/', 'app/styles/less/bootstrap/']
                 },
                 files: {
-                    'app/components/bootstrap/bootstrap.css': 'app/styles/less/bootstrap/bootstrap.less'
+                    'app/styles/bootstrap.css': 'app/styles/less/bootstrap/bootstrap.less'
                 }
             }
         },
         concat: {
             bootstrapCss: {
                 src: [
-                  'app/components/bootstrap/bootstrap.css',
+                  'app/styles/bootstrap.css',
                   'app/components/angular-ui/build/angular-ui.min.css'
                   ],
                 dest: 'app/styles/main.css'
