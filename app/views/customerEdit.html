@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4>Edit/add customer {{customerBeingEdited.name}}</h4>
+</div>
+<div class="modal-body">
+  <div>
+    <form class="form-horizontal">
+      <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+          <input type="text" ng-model="customerBeingEdited.name" placeHolder="Name" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Logo</label>
+        <div class="controls">
+          <input type="text" ng-model="customerBeingEdited.logoUrl" placeHolder="Logo(url)"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn" ng-click="dismiss()">Cancel</button>
+  <button class="btn btn-primary" ng-click="save(dismiss)">Save</button>
+</div>

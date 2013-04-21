@@ -1,6 +1,6 @@
 'use strict';
 
-var hoursApp = angular.module('hours', ['ui', 'ngResource'])
+var hoursApp = angular.module('hours', ['ui', 'ngResource', '$strap.directives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -10,6 +10,10 @@ var hoursApp = angular.module('hours', ['ui', 'ngResource'])
       .when('/Customers', {
         templateUrl: 'views/customers.html',
         controller: 'CustomersCtrl'
+      })
+      .when('/Projects', {
+        templateUrl: 'views/projects.html',
+        controller: 'ProjectsCtrl'
       })
       .otherwise({
         redirectTo: '/'

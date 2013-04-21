@@ -6,7 +6,10 @@ var Schema = mongoose.Schema,
 var CustomerSchema = new Schema({
   name: {
     type: String,
-  }
+  },
+  logoUrl: {
+    type: String,
+  }  
 });
 
 var ProjectSchema = new Schema({

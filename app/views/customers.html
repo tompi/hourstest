@@ -1,17 +1,21 @@
-
 <div class="row-fluid">
-  <h3>Customers</h3>
-  <div>
-    <form class="form-inline">
-      <input type="text" ng-model="newCustomerName"/>
-      <a href="" class="btn btn-primary" ng-click="create()"><i class="icon-save"></i> Create</a>
-    </form>
-  </div>
-  <table class="table">
+  <h3>Customers 
+    <a href="" class="btn btn-primary pull-right" ng-click="editCustomer()">
+      <i class="icon-plus"></i> Add
+    </a>
+  </h3>
+  <table class="table table-hover">
     <tbody>
       <tr ng-repeat="customer in customers">
-        <td>{{customer.name}}</td>
-        <td><a href="" ng-click="delete(customer)"><i class="icon-remove"></i></a></td>
+        <td width="50px" ng-click="editCustomer(customer)">
+          <img ng-src="{{customer.logoUrl}}" width="40px" height="40px" />
+        </td>
+        <td>
+          <h4><a href="" ng-click="editCustomer(customer)">{{customer.name}}</a></h4>
+        </td>
+        <td width="20px">
+          <a href="" ng-click="delete(customer)"><i class="icon-trash pull-right"></i></a>
+        </td>
       </tr>
     </tbody>
   </table>

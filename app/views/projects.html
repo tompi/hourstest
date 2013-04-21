@@ -1,0 +1,22 @@
+
+<div class="row-fluid">
+  <h3>Projects    <a href="" class="btn btn-primary pull-right" ng-click="editProject()">
+      <i class="icon-plus"></i> Add
+    </a>
+  </h3>
+  <div>
+    <form class="form-inline">
+      <label>Customer:</label>
+      <select ng-model="selectedCustomer" ng-options="customer.name for customer in customers"></select>
+      <img ng-src="{{selectedCustomer.logoUrl}}" height="30px" width="30px"/>
+    </form>
+  </div>
+  <table class="table">
+    <tbody>
+      <tr ng-repeat="project in projects">
+        <td>{{project.name}}</td>
+        <td><a href="" ng-click="delete(project)"><i class="icon-remove"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
