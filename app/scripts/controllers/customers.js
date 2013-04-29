@@ -1,7 +1,6 @@
 'use strict';
 
-hoursApp.controller('CustomersCtrl', function($scope, db, $modal) {
-
+window.app.controller('CustomersCtrl', function($scope, db, notifications, $modal, socket) {
   $scope.customers = db.Customer.query();
 
   $scope.editCustomer = function(customer) {
@@ -17,7 +16,8 @@ hoursApp.controller('CustomersCtrl', function($scope, db, $modal) {
   };
 
   $scope.save = function(dismiss) {
-    var newCustomer = ! $scope.customerBeingEdited._id;
+    var newCustomer = !$scope.customerBeingEdited._id;
+    notifications.alert('Saving ' + $scope.customerBeingEdited.name);
     $scope.customerBeingEdited.$save(function() {
       if (newCustomer) {
         // Add to controller array(no need to refetch from server)
@@ -34,4 +34,10 @@ hoursApp.controller('CustomersCtrl', function($scope, db, $modal) {
       $scope.customers.splice(ix, 1);
     });
   };
+  
+  // Events:
+  socket.on('customerAdded', function(data) {
+    notifications.alert('Somebody else added a customer.');
+    console.log(data);
+  });  
 });

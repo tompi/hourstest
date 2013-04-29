@@ -1,4 +1,6 @@
-hoursApp.factory('notifications', function() {
+/* global $ */
+
+window.app.factory('notifications', function() {
   var me = {};
   me.alert = function(text, type) {
     $.bootstrapGrowl(text, {
@@ -10,9 +12,9 @@ hoursApp.factory('notifications', function() {
       }, // 'top', or 'bottom'
       align: 'right', // ('left', 'right', or 'center')
       width: 250, // (integer, or 'auto')
-      delay: 4000,
-      allow_dismiss: true,
-      stackup_spacing: 10 // spacing between consecutively stacked growls.
+      delay: 2000,
+      'allow_dismiss': true,
+      'stackup_spacing': 10 // spacing between consecutively stacked growls.
     });
   };
   return me;

@@ -15,7 +15,7 @@
       "generator-karma": "*",
       "grunt-contrib-jshint": "*",
       "grunt-contrib-concat": "*",
-      "grunt-contrib-less": "*"
-      
+      "grunt-contrib-less": "*",
+      "socket.io": "*"
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-var hoursApp = angular.module('hours', ['ui', 'ngResource', '$strap.directives'])
+window.app = angular.module('hours', ['ui', 'ngResource', '$strap.directives'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

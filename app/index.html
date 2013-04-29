@@ -13,28 +13,28 @@
   </head>
   
   <body ng-app="hours">
-    <div class="navbar">
+    <div class="navbar" bs-navbar>
       <div class="navbar-inner">
-        <a class="brand" href="#">Hour registration</a>
-        <ul class="nav">        
-          <li class="active">
-            <a href="#/">Hours</a>
+        <a class="brand" href="#">Hours</a>
+        <ul class="nav">
+          <li data-match-route="/">
+            <a href="#/">Hour registration</a>
           </li>
-          <li>
+          <li data-match-route="/Projects">
             <a href="#/Projects">Projects</a>
           </li>
-          <li>
+          <li data-match-route="/Customers">
             <a href="#/Customers">Customers</a>
           </li>
         </ul>
       </div>
-    </div>
+    </div>  
     <div class="container">
       <div ng-view></div>
     </div>
     <script src="components/jquery/jquery.min.js"></script>
     <script src="components/jquery-ui/ui/minified/jquery-ui.custom.min.js"></script>
-    <script src="components/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="components/bootstrap-growl/jquery.bootstrap-growl.min.js"></script>
     <script src="components/angular/angular.js"></script>
     <script src="components/angular-resource/angular-resource.js"></script>
     <script src="components/angular-cookies/angular-cookies.js"></script>
@@ -42,10 +42,12 @@
     <script src="components/angular-ui/build/angular-ui.min.js"></script>
     <script src="components/bootstrap/docs/assets/js/bootstrap.min.js"></script>
     <script src="components/angular-strap/dist/angular-strap.min.js"></script>
+    <script src="components/socket.io-client/dist/socket.io.min.js"></script>
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/services/db.js"></script>
     <script src="scripts/services/notifications.js"></script>
+    <script src="scripts/services/socket.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/customers.js"></script>
     <script src="scripts/controllers/projects.js"></script>
