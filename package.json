@@ -7,6 +7,9 @@
       "express": "*",
       "angular-bridge": "*",
       "mongoose": "*",
+      "socket.io": "*"
+  },
+  "devDependencies": {
       "yo": "*",
       "grunt-cli": "*",
       "grunt": "*",
@@ -16,7 +19,6 @@
       "grunt-contrib-jshint": "*",
       "grunt-contrib-concat": "*",
       "grunt-contrib-less": "*",
-      "grunt-contrib-copy": "*",
-      "socket.io": "*"
-  }
+      "grunt-contrib-copy": "*"
+  }  
 }
