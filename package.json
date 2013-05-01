@@ -16,6 +16,7 @@
       "grunt-contrib-jshint": "*",
       "grunt-contrib-concat": "*",
       "grunt-contrib-less": "*",
+      "grunt-contrib-copy": "*",
       "socket.io": "*"
   }
 }

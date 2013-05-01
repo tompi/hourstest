@@ -34,10 +34,10 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
       $scope.customers.splice(ix, 1);
     });
   };
-  
+
   // Events:
   socket.on('customerAdded', function(data) {
     notifications.alert('Somebody else added a customer.');
     console.log(data);
-  });  
+  });
 });

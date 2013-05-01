@@ -5,6 +5,8 @@ var app = require('express')()
 
 server.listen(process.env.PORT || 3000);
 
+console.log(process.env);
+
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/socketTest.html');
 });

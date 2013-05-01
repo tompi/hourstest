@@ -1,6 +1,7 @@
 (function(module) {
   var mongoose = require('mongoose');
-  var db = mongoose.connect('mongodb://hours:hours@ds047057.mongolab.com:47057/hours');
+  var config = require('./config');
+  var db = mongoose.connect(config.mongoConnectionString);
   var Schema = mongoose.Schema,
     ObjectId = mongoose.Schema.Types.ObjectId;
   var EventEmitter = require('events').EventEmitter;
@@ -12,6 +13,12 @@
     },
     logoUrl: {
       type: String,
+    },
+    created: {
+      type: Date
+    },
+    createdBy: {
+      type: String
     }
   });
 
@@ -30,6 +37,12 @@
     },
     customerId: {
       type: ObjectId
+    },
+    created: {
+      type: Date
+    },
+    createdBy: {
+      type: String
     }
   });
 
@@ -42,18 +55,24 @@
     },
     projectId: {
       type: ObjectId
+    },
+    created: {
+      type: Date
+    },
+    createdBy: {
+      type: String
     }
   });
 
   CustomerSchema.methods.post = function(customer) {
-    me.emit('customerAdded', customer);
-    console.log('emitted event');
+    me.emit('customerCreated', customer);
   };
   CustomerSchema.methods.put = function(customer) {
-    me.emit('customerAdded', customer);
-    console.log('emitted event');
+    me.emit('customerChanged', customer);
   };
-
+  CustomerSchema.methods.delete = function(customer) {
+    me.emit('customerDeleted', customer);
+  };
 
   me.Customer = mongoose.model('customers', CustomerSchema);
   me.Project = mongoose.model('projects', ProjectSchema);

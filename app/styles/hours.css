@@ -8,7 +8,8 @@ body {
   background-size: cover;
 }
 .container {
-  background-image: url('/images/squairy_light.png');
+  background-color: #FFFFFF;
+  opacity: 0.8;
   padding: 20px;
   border: solid 2px;
   border-color: #bfbfbf;

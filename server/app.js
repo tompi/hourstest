@@ -1,20 +1,8 @@
 var express = require('express');
 var path = require('path');
-var events = require('events');
-var eventEmitter = new events.EventEmitter();
 var app = module.exports = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
-  
-  /*
-  var events = require('events');
-var eventEmitter = new events.EventEmitter();
-var ringBell = function ringBell() {
-  console.log('ring ring ring');
-};
-eventEmitter.on('doorOpen', ringBell);
-eventEmitter.emit('doorOpen');
-*/
   
 server.listen(process.env.PORT || 3000);
 
@@ -52,5 +40,8 @@ angularBridge.addResource('projects', db.Project);
 io.sockets.on('connection', function(socket) {
   db.on('customerAdded', function(customer) {
     socket.emit('customerAdded', customer);
+  });
+  db.on('customerChanged', function(customer) {
+    socket.emit('customerChanged', customer);
   });
 });
