@@ -1,11 +1,12 @@
 (function(module) {
   var mongoose = require('mongoose');
   var config = require('./config');
-  var db = mongoose.connect(config.mongoConnectionString);
   var Schema = mongoose.Schema,
     ObjectId = mongoose.Schema.Types.ObjectId;
   var EventEmitter = require('events').EventEmitter;
   var me = new EventEmitter();
+
+  mongoose.connect(config.mongoConnectionString);
 
   var CustomerSchema = new Schema({
     name: {
@@ -77,6 +78,6 @@
   me.Customer = mongoose.model('customers', CustomerSchema);
   me.Project = mongoose.model('projects', ProjectSchema);
   me.Hour = mongoose.model('hours', HourSchema);
-  
+
   module.exports = me;
 })(module);

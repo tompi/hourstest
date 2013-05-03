@@ -5,22 +5,22 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      all: ['Gruntfile.js', 'app/scripts/{,*/}*.js']
+      all: ['Gruntfile.js', 'server/**/*.js', 'client/**/*.js', '!client/js/lib/**/*.js']
     },
     less: {
       bootstrap: {
         options: {
-          paths: ['app/components/bootstrap/less/', 'app/styles/bootstrap/']
+          paths: ['components/bootstrap/less/', 'client/css/bootstrap/']
         },
         files: {
-          'app/styles/bootstrap/bootstrap.css': 'app/styles/bootstrap/bootstrap.less'
+          'client/css/bootstrap/bootstrap.css': 'client/css/bootstrap/bootstrap.less'
         }
       }
     },
     concat: {
       bootstrapCss: {
-        src: ['app/styles/bootstrap/bootstrap.css', 'app/components/angular-ui/build/angular-ui.min.css', 'app/components/font-awesome/css/font-awesome.min.css', 'app/styles/hours.css'],
-        dest: 'app/styles/main.css'
+        src: ['client/css/bootstrap/bootstrap.css', 'components/angular-ui/build/angular-ui.min.css', 'components/font-awesome/css/font-awesome.min.css', 'client/css/hours.css'],
+        dest: 'client/css/main.css'
       }
     },
     copy: {
@@ -28,14 +28,14 @@ module.exports = function(grunt) {
         files: [{
           src: ['**'],
           expand: true,
-          dest: 'app/styles/jqueryui/',
-          cwd: 'app/components/jquery-ui/themes/smoothness/'
+          dest: 'client/css/jqueryui/',
+          cwd: 'components/jquery-ui/themes/smoothness/'
         }]
       },
       js: {
         files: [{
-          src: ['app/components/jquery/jquery.min.js', 'app/components/jquery-ui/ui/minified/jquery-ui.custom.min.js', 'app/components/bootstrap-growl/jquery.bootstrap-growl.min.js', 'app/components/angular/angular.js', 'app/components/angular-ui/build/angular-ui.min.js', 'app/components/angular-cookies/angular-cookies.js', 'app/components/angular-resource/angular-resource.js', 'app/components/angular-sanitize/angular-sanitize.js', 'app/components/bootstrap/docs/assets/js/bootstrap.min.js', 'app/components/angular-strap/dist/angular-strap.min.js', 'app/components/socket.io-client/dist/socket.io.min.js'],
-          dest: 'app/lib/',
+          src: ['components/jquery/jquery.min.js', 'components/jquery-ui/ui/minified/jquery-ui.custom.min.js', 'components/bootstrap-growl/jquery.bootstrap-growl.min.js', 'components/angular/angular.js', 'components/angular-ui/build/angular-ui.min.js', 'components/angular-cookies/angular-cookies.js', 'components/angular-resource/angular-resource.js', 'components/angular-sanitize/angular-sanitize.js', 'components/bootstrap/docs/assets/js/bootstrap.min.js', 'components/angular-strap/dist/angular-strap.min.js', 'components/socket.io-client/dist/socket.io.min.js'],
+          dest: 'client/js/lib/',
           filter: 'isFile',
           expand: true,
           flatten: true
@@ -43,8 +43,8 @@ module.exports = function(grunt) {
       },
       fonts: {
         files: [{
-          src: ['app/components/font-awesome/font/*'],
-          dest: 'app/font/',
+          src: ['components/font-awesome/font/*'],
+          dest: 'client/font/',
           filter: 'isFile',
           expand: true,
           flatten: true

@@ -1,0 +1,56 @@
+<!doctype html>
+<html class="no-js">
+  
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jqueryui/jquery-ui.min.css">
+  </head>
+  
+  <body ng-app="hours">
+    <div class="navbar" bs-navbar>
+      <div class="navbar-inner">
+        <a class="brand" href="#">Hours</a>
+        <ul class="nav">
+          <li data-match-route="/">
+            <a href="#/">Hour registration</a>
+          </li>
+          <li data-match-route="/Projects">
+            <a href="#/Projects">Projects</a>
+          </li>
+          <li data-match-route="/Customers">
+            <a href="#/Customers">Customers</a>
+          </li>
+        </ul>
+      </div>
+    </div>  
+    <div class="container">
+      <div ng-view></div>
+    </div>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/jquery-ui.custom.min.js"></script>
+    <script src="js/lib/jquery.bootstrap-growl.min.js"></script>
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-resource.js"></script>
+    <script src="js/lib/angular-cookies.js"></script>
+    <script src="js/lib/angular-sanitize.js"></script>
+    <script src="js/lib/angular-ui.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/angular-strap.min.js"></script>
+    <script src="js/lib/socket.io.min.js"></script>
+    <!-- build:js scripts/scripts.js -->
+    <script src="app.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/socket.js"></script>
+    <script src="MainCtrl.js"></script>
+    <script src="domain/customer/CustomersCtrl.js"></script>
+    <script src="domain/project/ProjectsCtrl.js"></script>
+    <!-- endbuild -->
+  </body>
+
+</html>
