@@ -8,7 +8,7 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
     $scope.customerBeingEdited = customer || new db.Customer({});
 
     $modal({
-      template: 'views/customerEdit.html',
+      template: 'domain/customer/customerEdit.html',
       show: true,
       backdrop: 'static',
       scope: $scope
