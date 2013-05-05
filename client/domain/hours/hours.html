@@ -1,0 +1,54 @@
+
+<div class="row-fluid">
+  <h3>
+    Register hours for week {{weeknumber}} <small> year: {{year}}</small>
+    <a class="btn pull-right" href="" ng-click="nextWeek()"><i class="icon-chevron-right"></i></a>
+    <a class="btn pull-right" href="" ng-click="prevWeek()"><i class="icon-chevron-left"></i></a>
+  </h3>
+  <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Project</th>
+            <th ng-repeat="day in days">
+                <span class="muted">{{day.name}}</span> {{day.date}}
+            </th>
+            <th>Sum</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="p in billedProjects">
+        <td>
+            <img height="25px" width="25px" ng-src="{{p.project.customerId | customerLogoUrlFormatter:customers}}"/>
+            {{p.project.name}}             
+        </td>
+        <td><input class="input-mini" ng-model="p.hours[0]"></td>
+        <td><input class="input-mini" ng-model="p.hours[1]"></td>
+        <td><input class="input-mini" ng-model="p.hours[2]"></td>
+        <td><input class="input-mini" ng-model="p.hours[3]"></td>
+        <td><input class="input-mini" ng-model="p.hours[4]"></td>
+        <td><input class="input-mini" ng-model="p.hours[5]"></td>
+        <td><input class="input-mini" ng-model="p.hours[6]"></td>
+        <td>{{p.hours | sumLine}}</td>
+        <td><a href="" ng-click="delete(p)"><i class="icon-remove"></i></a></td>
+      </tr>
+      <tr ng-show="billedProjects.length > 0">
+        <td></td>
+        <td>{{billedProjects | sumColumns:'hours':0}}</td>
+        <td>{{billedProjects | sumColumns:'hours':1}}</td>
+        <td>{{billedProjects | sumColumns:'hours':2}}</td>
+        <td>{{billedProjects | sumColumns:'hours':3}}</td>
+        <td>{{billedProjects | sumColumns:'hours':4}}</td>
+        <td>{{billedProjects | sumColumns:'hours':5}}</td>
+        <td>{{billedProjects | sumColumns:'hours':6}}</td>
+        <td>{{billedProjects | sumTotal}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>  
+  <a class="btn btn-primary pull-right"><i class="icon-save"></i> Save</a>
+  <div class="input-append">
+    <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="select project"></select>
+    <a class="btn" href="" ng-click="addProject(selectedProject)"><i class="icon-plus-sign"></i> Add project</a>
+  </div>
+</div>

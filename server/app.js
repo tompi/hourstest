@@ -38,8 +38,8 @@ angularBridge.addResource('customers', db.Customer);
 angularBridge.addResource('projects', db.Project);
 
 io.sockets.on('connection', function(socket) {
-  db.on('customerAdded', function(customer) {
-    socket.emit('customerAdded', customer);
+  db.on('customerCreated', function(customer) {
+    socket.emit('customerCreated', customer);
   });
   db.on('customerChanged', function(customer) {
     socket.emit('customerChanged', customer);

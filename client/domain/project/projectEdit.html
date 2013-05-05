@@ -1,0 +1,44 @@
+<form class="form-horizontal">
+    <div class="modal-header">
+        <h4>Edit/add project {{projectBeingEdited.name}}</h4>
+    </div>
+    <div class="modal-body">
+        <div>
+            <div class="control-group">
+                <label class="control-label">Name:</label>
+                <div class="controls">
+                    <input type="text" ng-model="projectBeingEdited.name" placeHolder="Name"
+                    />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Customer:</label>
+                <div class="controls">
+                    <select ng-model="selectedCustomer" ng-options="customer.name for customer in customers"></select>
+                    <img ng-src="{{selectedCustomer.logoUrl}}" height="30px" width="30px" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Valid from:</label>
+                <div class="controls">
+                    <input type="text" class="input-small" placeholder="Date" ng-model="projectBeingEdited.validFrom"
+                    ui-date ui-date-format/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">Valid to:</label>
+                <div class="controls">
+                    <input type="text" class="input-small" placeholder="Date" ng-model="projectBeingEdited.validTo"
+                    ui-date ui-date-format/>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-error" ng-hide="valid">
+            {{validationMessage}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" ng-click="dismiss()">Cancel</button>
+        <button class="btn btn-primary" ng-click="save(dismiss)">Save</button>
+    </div>
+</form>

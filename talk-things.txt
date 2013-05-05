@@ -3,3 +3,4 @@
 devdependencies
 c9pm
 websockets(na c9/heroku)
+rest: baucis-ngresource: post to update/save: restangular

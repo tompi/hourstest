@@ -10,13 +10,13 @@
 
   var CustomerSchema = new Schema({
     name: {
-      type: String,
+      type: String, required: true
     },
     logoUrl: {
       type: String,
     },
     created: {
-      type: Date
+      type: Date, 'default': Date.now
     },
     createdBy: {
       type: String
@@ -25,7 +25,7 @@
 
   var ProjectSchema = new Schema({
     name: {
-      type: String,
+      type: String, required: true
     },
     validFrom: {
       type: Date
@@ -37,10 +37,10 @@
       type: String
     },
     customerId: {
-      type: ObjectId
+      type: ObjectId, required: true
     },
     created: {
-      type: Date
+      type: Date, 'default': Date.now
     },
     createdBy: {
       type: String
@@ -49,16 +49,16 @@
 
   var HourSchema = new Schema({
     day: {
-      type: Date
+      type: Date, required: true
     },
     hours: {
-      type: Number
+      type: Number, required: true
     },
     projectId: {
-      type: ObjectId
+      type: ObjectId, required: true
     },
     created: {
-      type: Date
+      type: Date, 'default': Date.now
     },
     createdBy: {
       type: String
@@ -75,9 +75,9 @@
     me.emit('customerDeleted', customer);
   };
 
-  me.Customer = mongoose.model('customers', CustomerSchema);
-  me.Project = mongoose.model('projects', ProjectSchema);
-  me.Hour = mongoose.model('hours', HourSchema);
+  me.Customer = mongoose.model('customer', CustomerSchema);
+  me.Project = mongoose.model('project', ProjectSchema);
+  me.Hour = mongoose.model('hour', HourSchema);
 
   module.exports = me;
 })(module);
