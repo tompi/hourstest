@@ -6,5 +6,11 @@ window.app.factory('db', function($resource) {
   me.Project = $resource('/api/projects/:id', {
     id: '@_id'
   });
+  me.Hour = $resource('/api/hours/:id', {
+    id: '@_id'
+  });
+  me.HoursByUserId = $resource('/mersapi/hour/finder/findByUser/:userId', {
+    userId: '@userId'
+  });
   return me;
 });

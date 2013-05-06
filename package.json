@@ -11,7 +11,8 @@
     "angular-bridge": "*",
     "mongoose": "*",
     "socket.io": "*",
-    "baucis": "~0.3.1"
+    "baucis": "~0.3.1",
+    "mers": "~0.6.1"
   },
   "devDependencies": {
     "yo": "*",

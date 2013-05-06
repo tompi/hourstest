@@ -46,7 +46,7 @@
       </tr>
     </tbody>
   </table>  
-  <a class="btn btn-primary pull-right"><i class="icon-save"></i> Save</a>
+  <a class="btn btn-primary pull-right" ng-click="save()"><i class="icon-save"></i> Save</a>
   <div class="input-append">
     <select ng-model="selectedProject" ng-options="project.name for project in projects" placeholder="select project"></select>
     <a class="btn" href="" ng-click="addProject(selectedProject)"><i class="icon-plus-sign"></i> Add project</a>

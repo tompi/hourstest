@@ -5,7 +5,7 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
 
   $scope.editCustomer = function(customer) {
 
-    $scope.customerBeingEdited = customer || new db.Customer({});    
+    $scope.customerBeingEdited = customer || new db.Customer({});
 
     $modal({
       template: 'domain/customer/customerEdit.html',

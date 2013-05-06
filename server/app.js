@@ -36,6 +36,11 @@ var angularBridge = new(require('angular-bridge'))(app, {
 
 angularBridge.addResource('customers', db.Customer);
 angularBridge.addResource('projects', db.Project);
+angularBridge.addResource('hours', db.Hour);
+
+var mers = require('mers');
+
+app.use('/mersapi', mers({mongoose: db.mongoose}).rest());
 
 io.sockets.on('connection', function(socket) {
   db.on('customerCreated', function(customer) {
