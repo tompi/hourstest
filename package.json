@@ -15,7 +15,6 @@
     "mers": "~0.6.1"
   },
   "devDependencies": {
-    "yo": "*",
     "grunt-cli": "*",
     "grunt": "*",
     "bower": "*",
