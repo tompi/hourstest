@@ -17,10 +17,10 @@
         </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="p in billedProjects">
+      <tr ng-repeat="p in hours.billedProjects">
         <td>
-            <img height="25px" width="25px" ng-src="{{p.project.customerId | customerLogoUrlFormatter:customers}}"/>
-            {{p.project.name}}             
+            <img height="25px" width="25px" ng-src="{{p.projectId | customerLogoUrlFormatter:customers:projects}}"/>
+            {{p.projectId | projectNameFormatter:projects}}             
         </td>
         <td><input class="input-mini" ng-model="p.hours[0]"></td>
         <td><input class="input-mini" ng-model="p.hours[1]"></td>
@@ -32,16 +32,16 @@
         <td>{{p.hours | sumLine}}</td>
         <td><a href="" ng-click="delete(p)"><i class="icon-remove"></i></a></td>
       </tr>
-      <tr ng-show="billedProjects.length > 0">
+      <tr ng-show="hours.billedProjects.length > 0">
         <td></td>
-        <td>{{billedProjects | sumColumns:'hours':0}}</td>
-        <td>{{billedProjects | sumColumns:'hours':1}}</td>
-        <td>{{billedProjects | sumColumns:'hours':2}}</td>
-        <td>{{billedProjects | sumColumns:'hours':3}}</td>
-        <td>{{billedProjects | sumColumns:'hours':4}}</td>
-        <td>{{billedProjects | sumColumns:'hours':5}}</td>
-        <td>{{billedProjects | sumColumns:'hours':6}}</td>
-        <td>{{billedProjects | sumTotal}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':0}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':1}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':2}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':3}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':4}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':5}}</td>
+        <td>{{hours.billedProjects | sumColumns:'hours':6}}</td>
+        <td>{{hours.billedProjects | sumTotal}}</td>
         <td></td>
       </tr>
     </tbody>

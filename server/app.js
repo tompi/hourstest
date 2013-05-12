@@ -26,7 +26,8 @@ app.get('/', function(req, res) {
 });
 
 io.set('log level', 2);
-io.set('transports', ['htmlfile', 'xhr-polling', 'jsonp-polling']);
+// Disable websockets: (not supported by heroku hosting)
+//io.set('transports', ['htmlfile', 'xhr-polling', 'jsonp-polling']);
 
 var db = require('./db.js');
 
@@ -38,10 +39,7 @@ angularBridge.addResource('customers', db.Customer);
 angularBridge.addResource('projects', db.Project);
 angularBridge.addResource('hours', db.Hour);
 
-var mers = require('mers');
-
-app.use('/mersapi', mers({mongoose: db.mongoose}).rest());
-
+// Setup socket.io events
 io.sockets.on('connection', function(socket) {
   db.on('customerCreated', function(customer) {
     socket.emit('customerCreated', customer);
@@ -49,4 +47,10 @@ io.sockets.on('connection', function(socket) {
   db.on('customerChanged', function(customer) {
     socket.emit('customerChanged', customer);
   });
+  db.on('customerDeleted', function(customer) {
+    socket.emit('customerDeleted', customer);
+  });
 });
+
+var mers = require('mers');
+app.use('/mersapi', mers({mongoose: db.mongoose}).rest());

@@ -7371,6 +7371,9 @@ a.badge:focus {
     overflow: visible !important;
   }
 }
+.navbar {
+  opacity: 0.8;
+}
 
 .ui-resetwrap{position:relative;display:inline-block}.ui-reset{position:absolute;top:0;right:0;z-index:2;display:none;height:100%;cursor:pointer}.ui-resetwrap:hover .ui-reset{display:block}.ui-currency-pos{color:green}.ui-currency-neg{color:red}.ui-currency-zero{color:blue}.ui-currency-pos.ui-bignum,.ui-currency-neg.ui-smallnum{font-size:110%}.ui-match{background:yellow}
 /*!
@@ -7410,7 +7413,8 @@ table.table-hover tr:hover {
   cursor: pointer;
 }
 body {
-  background-image: url('/images/office.jpg');
+  /* background-image: url('/images/office.jpg'); */
+  background-image: url('http://www.royalcollection.org.uk/sites/default/files/col/405333_261056_LPR_0.jpg');
   background-repeat: no-repeat;
   background-position: top;
   /* background-size: cover; */

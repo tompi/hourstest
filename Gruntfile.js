@@ -1,6 +1,11 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    'jasmine-node': {
+      run: {
+          spec: 'spec'
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -34,21 +39,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [{
-          src: [
-              'components/jquery/jquery.min.js',
-              'components/jquery-ui/ui/minified/jquery-ui.custom.min.js',
-              'components/bootstrap-growl/jquery.bootstrap-growl.min.js',
-              'components/angular/angular.js',
-              'components/angular-ui/build/angular-ui.min.js',
-              'components/angular-cookies/angular-cookies.js',
-              'components/angular-resource/angular-resource.js',
-              'components/angular-sanitize/angular-sanitize.js',
-              'components/bootstrap/docs/assets/js/bootstrap.min.js',
-              'components/angular-strap/dist/angular-strap.min.js',
-              'components/lodash/dist/lodash.min.js',
-              'components/socket.io-client/dist/socket.io.min.js',
-              'components/moment/min/moment.min.js',
-              'components/restangular/dist/restangular.min.js'],
+          src: ['components/jquery/jquery.min.js', 'components/jquery-ui/ui/minified/jquery-ui.custom.min.js', 'components/bootstrap-growl/jquery.bootstrap-growl.min.js', 'components/angular/angular.js', 'components/angular-ui/build/angular-ui.min.js', 'components/angular-cookies/angular-cookies.js', 'components/angular-resource/angular-resource.js', 'components/angular-sanitize/angular-sanitize.js', 'components/bootstrap/docs/assets/js/bootstrap.min.js', 'components/angular-strap/dist/angular-strap.min.js', 'components/lodash/dist/lodash.min.js', 'components/socket.io-client/dist/socket.io.min.js', 'components/moment/min/moment.min.js', 'components/restangular/dist/restangular.min.js'],
           dest: 'client/js/lib/',
           filter: 'isFile',
           expand: true,
@@ -71,8 +62,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jasmine-node');
 
-  grunt.registerTask('build', ['jshint', 'less', 'concat', 'copy']);
+  grunt.registerTask('test', ['jasmine-node']);
+  grunt.registerTask('build', ['jshint', 'test', 'less', 'concat', 'copy']);
 
   grunt.registerTask('default', ['build']);
 };

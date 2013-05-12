@@ -1,6 +1,66 @@
+V8 -> node.js
+event driven, non blocking io
+(default async, "sync" methods: readFileSync)
+=Javascript serverside
 
+Client side:
+1. browser normalisering: jquery
+2. onready spagetti/event hell
+3. Templating: handlebars osv: bedre enn mvc/spring
+4. problem rerender on datachange
+5. Backbone = boilerplate, marionette?
+6. Ember ?
+7. Knockout = "observable", small lib
+8. Angular
+9. require.js: Kanskje ikke så viktig i angular SPA
+
+MEAN-stack
+Mongodb: object store with indexes
+Express: node web framework(node <-> connect <-> express <-> browser)
+Angular:...
+Node:...
+
+IDE: Cloud 9
+Editor: Ace!
+Login, new project
+Theme: vibrant ink
+Øk font-size: ctrl+shft+.
+Zen-mode alt+z
+Vim bindings (view -> keyboard mode)
+
+Node:
+New workspace
+rename hello-world.js -> server.js
+package.json:
+{
+  "name": "hellojavascriptbin",
+  "version": "0.0.1"
+}
+Procfile:
+web: node ./server.js
+Git: commit
+Azure: new web-site, config git
+C9: add remote, push azure master
+c9pm install heroku
+heroku ps:scale web=1
+Heroku: Add site
+C9: add remote, push
+
+App-demo:
+Create customers:shell/esso/statoil
+Få noen andre til å legge til customer
+Create projects: oilsand/shale gas/angular in angola
+Hour-registration: 
+Add some projects
+Enter som hours
+
+Mongo:
+New db + user
+Get connection string
+package.json: mongoose, angular-bridge, mers
+Setup schemas
+Setup
 
 devdependencies
-c9pm
-websockets(na c9/heroku)
+websockets(na heroku)
 rest: baucis-ngresource: post to update/save: restangular

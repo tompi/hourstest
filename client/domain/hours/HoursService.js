@@ -1,30 +1,31 @@
 'use strict';
-(function(_) {
+
+(function(_, HoursResolver) {
+    var userId = '3686e23360eaa1e015123456';
     window.app.factory('hoursService', function(db) {
         var me = {};
         me.saveHours = function(days, hours) {
-            _.each(hours, function(projectLine) {
-                for (var i = 0; i < 7; i++) {
-                    if (projectLine.hours[i]) {
-                        var hour = new db.Hour({
-                            projectId: projectLine.project._id,
-                            userId: "5186a23360cfe81015000001",
-                            date: days[i].fullDate,
-                            hours: projectLine.hours[i]
-                        });
-                        hour.$save();
-                    }
-                }                            
+            var diffs = HoursResolver.getUiDiffs(hours.existingHours, hours.billedProjects);
+            _.each(diffs.news.concat(diffs.changes), function(hourRegistration) {
+                // Translate daynumber into date:
+                hourRegistration.date = days[hourRegistration.day].fullDate;
+                hourRegistration.userId = userId;
+                delete hourRegistration.day;
+                (new db.Hour(hourRegistration)).$save();
+            });
+            _.each(diffs.deleteds, function(hourRegistration) {
+                (new db.Hour(hourRegistration)).$delete();
             });
         };
-        me.getHours = function() {
+        me.getHours = function(fromDate, toDate) {
           var ret = {
-              existingHours: db.HoursByUserId.get({userId: "5186a23360cfe81015000001"}, function() {
-                 ret.existingHours = ret.existingHours.payload;                 
+              existingHours: db.HoursByUserId.get({userId: userId, fromDate: fromDate, toDate: toDate}, function() {
+                 ret.existingHours = ret.existingHours.payload;
+                 ret.billedProjects = HoursResolver.getUiHoursFromDbHours(ret.existingHours);
               })
           };
           return ret;
         };
         return me;
     });
-})(window._);
+})(window._, window.HoursResolver);

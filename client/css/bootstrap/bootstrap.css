@@ -7371,3 +7371,6 @@ a.badge:focus {
     overflow: visible !important;
   }
 }
+.navbar {
+  opacity: 0.8;
+}

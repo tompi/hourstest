@@ -12,17 +12,21 @@
     "mongoose": "*",
     "socket.io": "*",
     "baucis": "~0.3.1",
-    "mers": "~0.6.1"
+    "mers": "~0.6.1",
+    "underscore": "~1.4.4",
+    "moment": "~2.0.0"
   },
   "devDependencies": {
     "grunt-cli": "*",
     "grunt": "*",
     "bower": "*",
+    "jasmine-node": "*",
     "generator-angular": "*",
     "generator-karma": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-concat": "*",
     "grunt-contrib-less": "*",
+    "grunt-contrib-jasmine-node": "*",
     "grunt-contrib-copy": "*"
   }
 }

@@ -69,7 +69,8 @@
     });
 
     CustomerSchema.methods.post = function(customer) {
-        me.emit('customerCreated', customer);
+        var event = customer._id ? 'customerChanged' : 'customerCreated';
+        me.emit(event, customer);
     };
     CustomerSchema.methods.put = function(customer) {
         me.emit('customerChanged', customer);
@@ -77,10 +78,10 @@
     CustomerSchema.methods.delete = function(customer) {
         me.emit('customerDeleted', customer);
     };
-
-    HourSchema.statics.findByUser = function findByUser(q, term) {
+    HourSchema.statics.findByUser = function findByUser(q) {
         return this.find({
-            'userId': mongoose.Types.ObjectId(q.userId || term)
+            'userId': mongoose.Types.ObjectId(q.userId),
+            'date': { '$gte': new Date(q.fromDate), '$lte': new Date(q.toDate + ' 23:59') }
         });
     };
 

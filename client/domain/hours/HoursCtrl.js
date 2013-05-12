@@ -3,7 +3,6 @@
     window.app.controller('HoursCtrl', function($scope, db, hoursService) {
         $scope.customers = db.Customer.query();
         $scope.projects = db.Project.query();
-        $scope.existingHours = hoursService.getHours();
 
         $scope.setupScope = function(momentDay) {
             $scope.weeknumber = momentDay.week();
@@ -15,17 +14,16 @@
                 $scope.days.push({
                     name: d.format('ddd'),
                     date: d.format('DD.MM'),
-                    year: d.format('YYYY'),
-                    fullDate: d.toDate()
+                    dateWithYear: d.format('YYYY.MM.DD'),
+                    fullDate: moment(d).toDate()
                 });
             }
-            // TODO: fill from rest
-            $scope.billedProjects = [];
+            $scope.hours = hoursService.getHours($scope.days[0].dateWithYear, $scope.days[6].dateWithYear);
         };
 
         $scope.addProject = function(project) {
-            $scope.billedProjects.push({
-                project: project,
+            $scope.hours.billedProjects.push({
+                projectId: project._id,
                 hours: []
             });
         };
@@ -41,7 +39,7 @@
         };
 
         $scope.save = function() {
-            hoursService.saveHours($scope.days, $scope.billedProjects);
+            hoursService.saveHours($scope.days, $scope.hours);
         };
     });
 })(window.moment);

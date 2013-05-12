@@ -1,43 +1,44 @@
 'use strict';
 
 window.app.controller('CustomersCtrl', function($scope, db, notifications, $modal, socket) {
-  $scope.customers = db.Customer.query();
+    var loadCustomers = function() {
+        $scope.customers = db.Customer.query();
+    };
+    loadCustomers();
+    // UI events
+    $scope.editCustomer = function(customer) {
+        $scope.customerBeingEdited = customer || new db.Customer({});
+        $modal({
+            template: 'domain/customer/customerEdit.html',
+            show: true,
+            backdrop: 'static',
+            scope: $scope
+        });
+    };
 
-  $scope.editCustomer = function(customer) {
+    $scope.save = function(dismiss) {
+        db.Customer.save($scope.customerBeingEdited);
+        dismiss();
+    };
 
-    $scope.customerBeingEdited = customer || new db.Customer({});
+    $scope.delete = function(customer) {
+        customer.$delete();
+    };
 
-    $modal({
-      template: 'domain/customer/customerEdit.html',
-      show: true,
-      backdrop: 'static',
-      scope: $scope
+    // Server-side events:
+    socket.on('customerAdded', function(customer) {
+        loadCustomers();
+        notifications.alert('Somebody added customer ' + customer.name + '.');
+        console.log(customer);
     });
-  };
-
-  $scope.save = function(dismiss) {
-    var newCustomer = !$scope.customerBeingEdited._id;
-    notifications.alert('Saving ' + $scope.customerBeingEdited.name);
-    $scope.customerBeingEdited.$save(function() {
-      if (newCustomer) {
-        // Add to controller array(no need to refetch from server)
-        $scope.customers.push($scope.customerBeingEdited);
-      }
+    socket.on('customerChanged', function(customer) {
+        loadCustomers();
+        notifications.alert('Somebody changed customer ' + customer.name + '.');
+        console.log(customer);
     });
-    dismiss();
-  };
-
-  $scope.delete = function(customer) {
-    customer.$delete(function() {
-      // Remove from controller array
-      var ix = $scope.customers.indexOf(customer);
-      $scope.customers.splice(ix, 1);
+    socket.on('customerDeleted', function(customer) {
+        loadCustomers();
+        notifications.alert('Somebody deleted customer ' + customer.name + '.');
+        console.log(customer);
     });
-  };
-
-  // Events:
-  socket.on('customerAdded', function(data) {
-    notifications.alert('Somebody else added a customer.');
-    console.log(data);
-  });
 });

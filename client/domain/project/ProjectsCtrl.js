@@ -48,6 +48,7 @@
         };
 
         $scope.delete = function(project) {
+            notifications.alert('Deleting ' + project.name);
             project.$delete(function() {
                 // Remove from controller array
                 var ix = $scope.projects.indexOf(project);

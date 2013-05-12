@@ -2,7 +2,8 @@ table.table-hover tr:hover {
   cursor: pointer;
 }
 body {
-  background-image: url('/images/office.jpg');
+  /* background-image: url('/images/office.jpg'); */
+  background-image: url('http://www.royalcollection.org.uk/sites/default/files/col/405333_261056_LPR_0.jpg');
   background-repeat: no-repeat;
   background-position: top;
   /* background-size: cover; */
