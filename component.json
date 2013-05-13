@@ -9,7 +9,6 @@
     "font-awesome": "*",
     "jquery": "*",
     "jquery-ui": "*",
-    "restangular": "~0.6.2",
     "bootstrap": "*",
     "moment": "~2.0.0",
     "angular-strap": "*",
