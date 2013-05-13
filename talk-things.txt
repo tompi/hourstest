@@ -3,17 +3,6 @@ event driven, non blocking io
 (default async, "sync" methods: readFileSync)
 =Javascript serverside
 
-Client side:
-1. browser normalisering: jquery
-2. onready spagetti/event hell
-3. Templating: handlebars osv: bedre enn mvc/spring
-4. problem rerender on datachange
-5. Backbone = boilerplate, marionette?
-6. Ember ?
-7. Knockout = "observable", small lib
-8. Angular
-9. require.js: Kanskje ikke så viktig i angular SPA
-
 MEAN-stack
 Mongodb: object store with indexes
 Express: node web framework(node <-> connect <-> express <-> browser)
@@ -27,9 +16,6 @@ Theme: vibrant ink
 Øk font-size: ctrl+shft+.
 Zen-mode alt+z
 Vim bindings (view -> keyboard mode)
-
-Node:
-New workspace
 rename hello-world.js -> server.js
 package.json:
 {
@@ -45,6 +31,20 @@ c9pm install heroku
 heroku ps:scale web=1
 Heroku: Add site
 C9: add remote, push
+
+
+Client side:
+1. browser normalisering: jquery
+2. onready spagetti/event hell
+3. Templating: handlebars osv: bedre enn mvc/spring
+4. Problem rerender on datachange
+5. Backbone = boilerplate, marionette?
+6. Ember ?
+7. Knockout = "observable", small lib
+8. Angular, opinionated: mener noe om det meste
+9. require.js: Kanskje ikke så viktig i angular SPA
+
+
 
 App-demo:
 Create customers:shell/esso/statoil

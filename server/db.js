@@ -69,8 +69,7 @@
     });
 
     CustomerSchema.methods.post = function(customer) {
-        var event = customer._id ? 'customerChanged' : 'customerCreated';
-        me.emit(event, customer);
+        me.emit('customerChanged', customer);
     };
     CustomerSchema.methods.put = function(customer) {
         me.emit('customerChanged', customer);

@@ -26,14 +26,9 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
     };
 
     // Server-side events:
-    socket.on('customerAdded', function(customer) {
-        loadCustomers();
-        notifications.alert('Somebody added customer ' + customer.name + '.');
-        console.log(customer);
-    });
     socket.on('customerChanged', function(customer) {
         loadCustomers();
-        notifications.alert('Somebody changed customer ' + customer.name + '.');
+        notifications.alert('Somebody added or changed customer ' + customer.name + '.');
         console.log(customer);
     });
     socket.on('customerDeleted', function(customer) {
