@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     },
     concat: {
       bootstrapCss: {
-        src: ['client/css/bootstrap/bootstrap.css', 'components/angular-ui/build/angular-ui.min.css', 'components/font-awesome/css/font-awesome.min.css', 'client/css/hours.css'],
+        src: ['client/css/bootstrap/bootstrap.css', 'components/angular-ui/build/angular-ui.min.css', 'components/font-awesome/build/assets/font-awesome/css/font-awesome.min.css', 'client/css/hours.css'],
         dest: 'client/css/main.css'
       }
     },
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
       },
       fonts: {
         files: [{
-          src: ['components/font-awesome/font/*'],
+          src: ['components/font-awesome/build/assets/font-awesome/font/*'],
           dest: 'client/font/',
           filter: 'isFile',
           expand: true,
