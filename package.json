@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "express": "*",
-    "angular-bridge": "*",
+    "angular-bridge": "https://github.com/tompi/angular-bridge/tarball/master",
     "mongoose": "*",
     "socket.io": "*",
     "mers": "~0.6.1",

@@ -1,6 +1,7 @@
 'use strict';
 
 window.app.controller('CustomersCtrl', function($scope, db, notifications, $modal, socket) {
+    // Load from db
     var loadCustomers = function() {
         $scope.customers = db.Customer.query();
     };

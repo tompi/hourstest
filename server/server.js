@@ -41,7 +41,7 @@ angularBridge.addResource('hours', db.Hour);
 
 // Setup socket.io events
 io.sockets.on('connection', function(socket) {
-  db.on('customerCreated', function(customer) {
+  db.on('customerCreated', function(customer) {    
     socket.emit('customerCreated', customer);
   });
   db.on('customerChanged', function(customer) {
