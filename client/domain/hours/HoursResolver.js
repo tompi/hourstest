@@ -18,7 +18,7 @@
     });
     return projects;
   };
-  
+
   exports.getUiDiffs = function(dbHours, uiHours) {
       // First index dbHours for easy lookup when comparing:
       var dbHoursProjects = {};
@@ -36,7 +36,7 @@
       var ret = { changes: [], news: [], deleteds: [] };
       // Now loop over ui-hours and compare
       _.each(uiHours, function(project) {
-          var oldProject = dbHoursProjects[project.projectId] || {hours: [], ids: []};          
+          var oldProject = dbHoursProjects[project.projectId] || {hours: [], ids: []};
           for (var i=0; i<7; i++) {
             var oldHours = oldProject.hours[i] || 0;
             var newHours = project.hours[i] || 0;
