@@ -1,3 +1,9 @@
+Intro:
+Navn, studerte i bergen, 15 år med web-utv, 1,5 i bouvet
+JS-revolusjon: sidrompa serverside -> utvikling flyttes klientside
+Lego-klosser: eks. Ace-editor-statoil
+
+ASP.net web
 V8 -> node.js
 event driven, non blocking io
 (default async, "sync" methods: readFileSync)
@@ -24,6 +30,7 @@ package.json:
 }
 Procfile:
 web: node ./server.js
+git init
 Git: commit
 Azure: new web-site, config git
 C9: add remote, push azure master
@@ -34,6 +41,7 @@ C9: add remote, push
 
 
 Client side:
+1. Server side generated html
 1. browser normalisering: jquery
 2. onready spagetti/event hell
 3. Templating: handlebars osv: bedre enn mvc/spring
@@ -43,8 +51,6 @@ Client side:
 7. Knockout = "observable", small lib
 8. Angular, opinionated: mener noe om det meste
 9. require.js: Kanskje ikke så viktig i angular SPA
-
-
 
 App-demo:
 Create customers:shell/esso/statoil
@@ -60,6 +66,65 @@ Get connection string
 package.json: mongoose, angular-bridge, mers
 Setup schemas
 Setup
+
+Code review:
+Index.html: ngview -> app.js: routing
+Rant om kode-organisering:
+kontekst-switching: views/controllers
+Hva er viktigst: hva koden gjør eller hvordan den gjør det
+Hva kommer du til å gjøre med koden om ett år: endre noe på 
+alle kontrollerne, eller endre noe i en kontroller+tilhørende view?
+
+Customer:
+Rant om hva en begynner med: backend eller front-end?
+Crud-list editor: begrunnelse for popup: overflow
+Angular-strap: scoping issues, hvorfor ang-strap?: wrapper, not reinvent
+View: customers.html
+Bootstrap - vis side
+Bower.json -> components(untouchable) -> client/css: kopiert less-filer med endring
+grunt -> less-kompilering til app.css
+Tilbake til customers.html
+Font awesome: skalerbare ikoner! Vis side
+ng-repeat: direktiv, gjentar tag-innhold per iterasjon i loop (magic)
+ng-click: kaller funksjon på kontroller (kontroller definert i router)
+template: {{}} (dobbel puppe-parantes)
+Rant om logikk i template?
+
+Controller: CustomersCtrl.js
+window.app definert i app.js: kontroller-deklarasjon, dependency injection!
+db -> resolver til db.js service
+$resource: angular generisk rest-endpoint wrapper
+tilbake til controller
+query -> get : vis angular api doc -> post/put rant
+editcustomer: kalt fra ng-click med customer som parameter(eller ikke ved "ny")
+$modal: scoping issues...
+template-explanation customerEdit.html
+ng-submit: save -> tilbake til controller -> blir til post mot rest-api
+socket: dependency: wrappet socket.io i en service: scope apply-forklaring ("digest", change-checking)
+underscore/lodash: find + other goodies: ta opp underscore-webside
+
+Server side:
+server.js: boilerplate: serve statisk html, cookies etc vi ikke trenger
+portnummer: greit å huske på, men umulig å glemme... debug.
+db.js: mongoose: MANGE muligheter, defaults, indexer, komplekse queries, valideringer. 
+event emitter: Annen mulighet: klient broadcaster ved endring?
+exports alle modeller
+Bruker angular-bridge for å eksponere modeller som rest-api
+Bugs - pull request- bug - lokal kopi, vis package.json
+Timeregistreringsbildet: komplisert spørring: mers.... TODO: rewrite crud mot mers
+
+Timeregistrering:
+Ukebasert timeføring
+Sette opp html: implisitt modell
+weeknumber+year = "days": tekst+dato
+momentjs: dra opp webside: server/klientside
+"uiHours": [ {projectid: "jalla", hours: [3.5, 0, 0, 2]}, osv]
+"oversette" db-hours til ui-hours ved lasting fra db
+andre veien ved lagring
+Som vi alltid gjør: spart testing til sist
+HoursResolver.js: spec!
+Grunt: grunt-contrib-jasmine-node: stopper dersom hint/test feiler.
+TDD: laget tester først.
 
 devdependencies
 websockets(na heroku)

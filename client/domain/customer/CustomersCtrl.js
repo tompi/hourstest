@@ -2,10 +2,7 @@
 
 window.app.controller('CustomersCtrl', function($scope, db, notifications, $modal, socket) {
     // Load from db
-    var loadCustomers = function() {
-        $scope.customers = db.Customer.query();
-    };
-    loadCustomers();
+    $scope.customers = db.Customer.query();
     // UI events
     $scope.editCustomer = function(customer) {
         $scope.customerBeingEdited = customer || {};
@@ -38,7 +35,7 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
         notifications.alert('Somebody added or changed customer ' + changedCustomer.name + '.');
     });
     socket.on('customerDeleted', function(deletedCustomer) {
-        $scope.customers = window._.filter($scope.customers, function(c) { return c._id !== deletedCustomer._id; })
+        $scope.customers = window._.filter($scope.customers, function(c) { return c._id !== deletedCustomer._id; });
         notifications.alert('Somebody deleted customer ' + deletedCustomer.name + '.');
     });
 });
