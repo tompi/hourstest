@@ -1,4 +1,4 @@
-<form class="form-horizontal" ng-submit="save(dismiss)" >
+<form class="form-horizontal">
 <div class="modal-header">
   <h4>Edit/add customer {{customerBeingEdited.name}}</h4>
 </div>
@@ -21,6 +21,6 @@
 </div>
 <div class="modal-footer">
   <button class="btn" ng-click="dismiss()">Cancel</button>
-  <input type="submit" class="btn btn-primary" value="Save"/>
+  <input type="button" class="btn btn-primary" value="Save"  ng-click="save(dismiss)"/>
 </div>
 </form>

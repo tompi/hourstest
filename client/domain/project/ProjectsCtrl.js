@@ -14,7 +14,8 @@
                 template: 'domain/project/projectEdit.html',
                 show: true,
                 backdrop: 'static',
-                scope: $scope
+                scope: $scope,
+                persist: true
             });
         };
 

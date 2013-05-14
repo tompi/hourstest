@@ -8,12 +8,13 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
     loadCustomers();
     // UI events
     $scope.editCustomer = function(customer) {
-        $scope.customerBeingEdited = customer || new db.Customer({});
+        $scope.customerBeingEdited = customer || {};
         $modal({
             template: 'domain/customer/customerEdit.html',
             show: true,
             backdrop: 'static',
-            scope: $scope
+            scope: $scope,
+            persist: true
         });
     };
 
@@ -23,18 +24,21 @@ window.app.controller('CustomersCtrl', function($scope, db, notifications, $moda
     };
 
     $scope.delete = function(customer) {
-        customer.$delete();
+        (new db.Customer(customer)).$delete();
     };
 
     // Server-side events:
-    socket.on('customerChanged', function(customer) {
-        loadCustomers();
-        notifications.alert('Somebody added or changed customer ' + customer.name + '.');
-        console.log(customer);
+    socket.on('customerChanged', function(changedCustomer) {
+        var existing = window._.find($scope.customers, function(c) { return c._id === changedCustomer._id; });
+        if (existing) {
+            window.angular.extend(existing, changedCustomer);
+        } else {
+            $scope.customers.push(changedCustomer);
+        }
+        notifications.alert('Somebody added or changed customer ' + changedCustomer.name + '.');
     });
-    socket.on('customerDeleted', function(customer) {
-        loadCustomers();
-        notifications.alert('Somebody deleted customer ' + customer.name + '.');
-        console.log(customer);
+    socket.on('customerDeleted', function(deletedCustomer) {
+        $scope.customers = window._.filter($scope.customers, function(c) { return c._id !== deletedCustomer._id; })
+        notifications.alert('Somebody deleted customer ' + deletedCustomer.name + '.');
     });
 });
